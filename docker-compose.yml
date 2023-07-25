@@ -4,7 +4,7 @@ services:
   web:
     build: web
     ports:
-      - "56789:8000"
+      - "56733:8000"
     volumes:
       - ./web:/app
     env_file:
@@ -20,8 +20,7 @@ services:
   db:
     image: postgres:13-alpine
     volumes:
-      - /postgres_data:/var/lib/postgresql/data
-
+      - postgres_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_USER=hello_flask
       - POSTGRES_PASSWORD=hello_flask

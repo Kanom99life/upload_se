@@ -1,7 +1,7 @@
 from flask.cli import FlaskGroup
 from werkzeug.security import generate_password_hash
 from app import app, db
-from app.models.authuser import AuthUser
+from app.models.document import Document
 
 cli = FlaskGroup(app)
 
@@ -15,6 +15,8 @@ def create_db():
 
 @cli.command("seed_db")
 def seed_db():
+    db.session.add(Document(doc_path= "111111111", u_id=0))
+
     db.session.commit()
 
 

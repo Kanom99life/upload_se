@@ -6,7 +6,6 @@ import os
 from wtforms.validators import InputRequired
 from app import app
 
-app.config['UPLOAD_FOLDER'] = 'static/files'
 
 class UploadFileForm(FlaskForm):
     file = FileField("File", validators=[InputRequired()])
