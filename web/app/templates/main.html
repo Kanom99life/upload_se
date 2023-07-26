@@ -1,18 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Uploaded PDFs</title>
 </head>
 <body>
-    <h1>Flask File Uploads</h1>
+    <h1>Uploaded PDF Files</h1>
+    <ul>
+        {% for document in documents %}
+            <li>
+                <a href="{{ document.doc_path }}" target="_blank">{{ document.id }}, {{ document.doc_name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
 
-    <form method='POST' enctype='multipart/form-data'>
-        {{form.hidden_tag()}}
-        {{form.file()}}
-        {{form.submit()}}
+    <h1>Upload a new PDF File</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        
+        <!-- when open file explorer it will show only .pdf file -->
+        {{ form.file.label }} {{ form.file(accept="application/pdf") }} 
+        {{ form.submit() }}
     </form>
 </body>
 </html>

@@ -15,7 +15,7 @@ def create_db():
 
 @cli.command("seed_db")
 def seed_db():
-    db.session.add(Document(doc_path= "111111111", u_id=0))
+    db.session.add(Document(doc_name="ทดสอบ, test", doc_path= "111111111", u_id=0))
 
     db.session.commit()
 
